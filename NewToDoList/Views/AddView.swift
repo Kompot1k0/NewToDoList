@@ -30,16 +30,9 @@ struct AddView: View {
                 Button(action: { saveButtonAction()
                 }, label: {
                     Text("SAVE")
-                        .foregroundColor(.white)
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background{
-                            Color.accentColor
-                        }
-                        .cornerRadius(10)
+                        .applyButtonStyle()
                 })
             }
-            .shadow(color: Color(uiColor: .systemGray).opacity(0.7), radius: 10, x: 5, y: 10)
             .padding()
             .alert(alertText,
                    isPresented: $isAlert,

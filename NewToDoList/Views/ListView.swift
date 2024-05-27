@@ -12,22 +12,28 @@ struct ListView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(model.items) { item in
-                    ListRowItem(item: item)
-                        .onTapGesture {
-                            withAnimation(.linear) {
-                                model.changeIsComplete(item)
-                            }
+            ZStack {
+                if model.items.isEmpty {
+                    EmptyListView()
+                } else {
+                    List {
+                        ForEach(model.items) { item in
+                            ListRowItem(item: item)
+                                .onTapGesture {
+                                    withAnimation(.linear) {
+                                        model.changeIsComplete(item)
+                                    }
+                                }
                         }
+                        .onDelete (perform: model.deleteItem )
+                        .onMove(perform: model.moveItem )
+                    }
+                    .background(
+                        BackgroundView()
+                    )
+                    .listStyle(.plain)
                 }
-                .onDelete (perform: model.deleteItem )
-                .onMove(perform: model.moveItem )
             }
-            .background(
-                BackgroundView()
-            )
-            .listStyle(.plain)
             .navigationTitle("ToDo List 📝")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -36,7 +42,7 @@ struct ListView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink("Add",
-                        destination: AddView()
+                                   destination: AddView()
                     )
                     .padding()
                 }
