@@ -10,11 +10,12 @@ import SwiftUI
 extension View {
     func applyButtonStyle() -> some View {
         self
+            .fontWeight(.semibold)
             .foregroundColor(.white)
             .frame(height: 50)
             .frame(maxWidth: .infinity)
             .background(Color.accentColor)
             .cornerRadius(10)
-            .shadow(color: Color(uiColor: .systemGray).opacity(0.7), radius: 10, x: 5, y: 10)
+            .shadow(color: Color.accentColor.opacity(0.7), radius: 10, x: 5, y: 10)
     }
 }

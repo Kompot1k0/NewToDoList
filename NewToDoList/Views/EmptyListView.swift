@@ -29,15 +29,16 @@ struct EmptyListView: View {
                         .background(animate ? Color.indigo : Color.accentColor)
                         .cornerRadius(10)
                         .shadow(
-                            color: animate ? Color.indigo.opacity(0.7) : Color.accentColor.opacity(0.7),
+                            color: animate ? Color.indigo.opacity(0.7) : Color.accentColor.opacity(0.4),
                             radius: animate ? 5 : 10,
-                            x: 5,
-                            y: 10)
+                            x: 0,
+                            y: animate ? 10 : 30)
                         .scaleEffect(animate ? 0.8 : 0.9)
                 }
             )
             Spacer()
         }
+        .frame(maxWidth: 400)
         .multilineTextAlignment(.center)
         .padding()
         .onAppear {
