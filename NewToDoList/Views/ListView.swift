@@ -15,6 +15,11 @@ struct ListView: View {
             ZStack {
                 if model.items.isEmpty {
                     EmptyListView()
+                    //                        .transition(AnyTransition.opacity.animation(.easeIn))
+                        .transition(.asymmetric(
+                            insertion: AnyTransition.opacity.animation(.easeIn),
+                            removal: .identity))
+                    
                 } else {
                     List {
                         ForEach(model.items) { item in
