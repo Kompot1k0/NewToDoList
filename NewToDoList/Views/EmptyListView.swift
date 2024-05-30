@@ -33,7 +33,7 @@ struct EmptyListView: View {
                             radius: animate ? 5 : 10,
                             x: 0,
                             y: animate ? 10 : 30)
-                        .scaleEffect(animate ? 0.8 : 0.9)
+                        .offset(y: animate ? 30 : 10)
                 }
             )
             Spacer()
